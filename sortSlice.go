@@ -7,13 +7,13 @@ import (
 )
 
 func bubbleSort(arr []int) []int {
-	swappend := true
-	for swappend {
-		swappend = false
+	swapped := true
+	for swapped {
+		swapped = false
 		for i := 0; i < len(arr)-1; i++ {
 			if arr[i+1] < arr[i] {
 				arr[i+1], arr[i] = arr[i], arr[i+1]
-				swappend = true
+				swapped = true
 			}
 		}
 	}
@@ -22,20 +22,20 @@ func bubbleSort(arr []int) []int {
 
 func insertSort(arr []int) []int {
 	for i := 1; i < len(arr); i++ {
-		x := arr[i]
+		el := arr[i]
 		j := i
-		for j >= 1 && arr[j-1] > x {
+		for j >= 1 && arr[j-1] > el {
 			arr[j] = arr[j-1]
 			j = j - 1
 		}
-		arr[j] = x
+		arr[j] = el
 
 	}
 
 	return arr
 }
 
-func createSlice() []int {
+func createRandomSlice() []int {
 	count := 5
 	sliceForSort := make([]int, 0, count)
 	for i := 0; i < count; i++ {
@@ -47,11 +47,11 @@ func createSlice() []int {
 }
 
 func main() {
-	sliceForBubbleSort := createSlice()
+	sliceForBubbleSort := createRandomSlice()
 	fmt.Println("Исходный слайс: ", sliceForBubbleSort)
 	fmt.Println("Алгоритм сортировки пузырьком: ", bubbleSort(sliceForBubbleSort))
 
-	sliceForInsertSort := createSlice()
+	sliceForInsertSort := createRandomSlice()
 	fmt.Println("Исходный слайс: ", sliceForInsertSort)
 	fmt.Println("Алгоритм сортировки вставками: ", insertSort(sliceForInsertSort))
 }

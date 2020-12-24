@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 var mapFibonachi = map[uint32]uint32{
@@ -13,7 +14,12 @@ var mapFibonachi = map[uint32]uint32{
 func main() {
 	var fibonachiNumber uint32
 	for true {
-		fmt.Scan(&fibonachiNumber)
+		fmt.Println("Введите номер числа Фибоначчи")
+		_, err := fmt.Scan(&fibonachiNumber) // проверяем ошибку соответсвея типу вводимых данных
+		if err != nil {
+			fmt.Println("Проверьте типы входных параметров")
+			os.Exit(1)
+		}
 
 		_, exist := mapFibonachi[fibonachiNumber]
 		if exist == true {
@@ -35,5 +41,6 @@ func findFibonachiElement(fnum uint32) uint32 {
 	} else {
 		mapFibonachi[fnum] = findFibonachiElement(fnum-2) + findFibonachiElement(fnum-1)
 		return mapFibonachi[fnum]
+
 	}
 }

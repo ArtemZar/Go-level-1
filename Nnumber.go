@@ -9,7 +9,12 @@ import (
 func main() {
 	var N int64
 	fmt.Println("Введите число от 2 до 1000: ")
-	fmt.Scanln(&N)
+	_, err := fmt.Scan(&N) // проверяем ошибку соответсвея типу вводимых данных
+	if err != nil {
+		fmt.Println("Проверьте типы входных параметров")
+		os.Exit(1)
+	}
+
 	if N < 2 || N > 1000 {
 		fmt.Println("не корректный ввод")
 		os.Exit(1)

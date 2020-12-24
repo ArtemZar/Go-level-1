@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func bubbleSort(arr []int) []int {
+func bubbleSort(arr []int) ([]int, error) {
 	swapped := true
 	for swapped {
 		swapped = false
@@ -17,10 +17,10 @@ func bubbleSort(arr []int) []int {
 			}
 		}
 	}
-	return arr
+	return arr, nil
 }
 
-func insertSort(arr []int) []int {
+func insertSort(arr []int) ([]int, error) {
 	for i := 1; i < len(arr); i++ {
 		el := arr[i]
 		j := i
@@ -32,10 +32,10 @@ func insertSort(arr []int) []int {
 
 	}
 
-	return arr
+	return arr, nil
 }
 
-func createRandomSlice() []int {
+func createRandomSlice() ([]int, error) {
 	count := 5
 	sliceForSort := make([]int, 0, count)
 	for i := 0; i < count; i++ {
@@ -43,7 +43,7 @@ func createRandomSlice() []int {
 		n := rand.Intn(1000)
 		sliceForSort = append(sliceForSort, n)
 	}
-	return sliceForSort
+	return sliceForSort, nil
 }
 
 func main() {

@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
+	"github.com/ArtemZar/Go-level-1/lesson2-calc/operations"
 	"os"
 	"strconv"
 	"strings"
@@ -11,35 +11,14 @@ import (
 
 const helpMessage = "command format: 'cmd num1 num2'"
 
-func sum(a, b float64) (float64, error) {
-	return a + b, nil
-}
 
-func subtract(a, b float64) (float64, error) {
-	return a - b, nil
-}
-
-func multiply(a, b float64) (float64, error) {
-	return a * b, nil
-}
-
-func divide(a, b float64) (float64, error) {
-	if b == 0 {
-		return 0, fmt.Errorf("На 0 делить нельзя")
-	}
-	return a / b, nil
-}
-
-func elevate(a, b float64) (float64, error) {
-	return math.Pow(a, b), nil
-}
 
 var cmdMap = map[string]func(float64, float64) (float64, error){
-	"sum":      sum,
-	"subtract": subtract,
-	"multiply": multiply,
-	"divide":   divide,
-	"elevate":  elevate,
+	"sum":      operations.Sum,
+	"subtract": operations.Subtract,
+	"multiply": operations.Multiply,
+	"divide":   operations.Divide,
+	"elevate":  operations.Elevate,
 }
 
 func processCmd(cmd string, a, b float64) (float64, error) {
